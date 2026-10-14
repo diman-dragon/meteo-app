@@ -1,0 +1,59 @@
+# Meteo — прогноз погоды (Capacitor 8, Android)
+
+Данные: [Open-Meteo](https://open-meteo.com/) — прогноз (current / hourly / daily, все поддерживаемые параметры, 16 дней), качество воздуха и пыльца, геокодирование.
+
+## Что умеет
+- Обновление **только по нажатию** «Обновить». Автозапросов нет (проверяется скриптом). В мобильной сети — подтверждение при каждом обновлении.
+- Место вручную: поиск города или координаты. Разрешения на геолокацию нет.
+- Настройки (отдельный экран): версия приложения, тема (тёмная AMOLED / светлая светло-коричневая), язык (авто / русский / English), место.
+- Офлайн: последний прогноз хранится на устройстве.
+- Нажатие на час или день — все параметры Open-Meteo; в дне — ещё и все 24 часа.
+
+## Строгая атомарность (одна ответственность — один файл)
+`npm run check` (и CI) падает, если:
+- в файле больше одного `export` или функции; имя файла ≠ имени экспорта; файл длиннее 40 строк (данные в `config/` и `i18n/` — до 120);
+- есть мёртвый файл, `localStorage`, `innerHTML`, `eval`, `fetch` вне `api/fetchJson.js`;
+- `refreshWeather` импортирует кто-то кроме `refreshButton`, запросы погоды вызываются не из `refreshWeather`, есть `setInterval`/авто-триггеры;
+- в `ru`/`en`/`*Vars`/`*Wmo` разные ключи, использован `t('…')` без перевода, у переменной Open-Meteo нет подписи.
+
+## Структура `src/`
+| Папка | Ответственность |
+|---|---|
+| `config/` | константы и списки переменных Open-Meteo |
+| `api/` | URL-билдеры и сетевые функции |
+| `storage/` | чтение/запись Preferences |
+| `state/` | единый объект состояния |
+| `network/` | тип подключения |
+| `i18n/` | словари и переводчики |
+| `domain/` | чистые функции форматирования |
+| `flows/` | сценарии (обновить, выбрать место, тема, язык, старт) |
+| `navigation/` | экраны и кнопка «назад» |
+| `theme/` | тема и системные панели |
+| `ui/` | компоненты, диалоги, экраны (`el.js` — безопасное создание DOM) |
+| `styles/` | один CSS-файл на ответственность; темы в `themes/` |
+
+## Запуск
+```bash
+nvm use            # Node 22
+npm ci
+npm run check      # атомарность
+npm run dev        # браузер
+npm run android:debug   # нужен Android SDK + JDK 21
+```
+Открыть в Android Studio: `npx cap open android`.
+
+## GitHub
+- `ci.yml` — на push/PR: check → build → debug APK (артефакт).
+- `release.yml` — на тег `vX.Y.Z`: подписанный **AAB** (артефакт).
+
+Секреты репозитория: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
+```bash
+keytool -genkeypair -v -keystore upload.jks -alias upload -keyalg RSA -keysize 2048 -validity 10000
+base64 -w0 upload.jks     # → KEYSTORE_BASE64
+```
+Версия: меняйте только `package.json` (`versionName`; `versionCode` считается автоматически). Тег должен совпадать: `v1.0.1`.
+
+## Перед публикацией
+Смотрите `docs/PLAY_CHECKLIST.md`. Обязательно: сменить `applicationId`, URL политики конфиденциальности (`src/config/privacyPolicyUrl.js`), e-mail в `docs/privacy-policy.md`.
+
+Иконки пересоздаются `python3 tools/makeIcons.py` (нужен Pillow).

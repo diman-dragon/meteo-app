@@ -1,0 +1,10 @@
+#app { max-width: 640px; margin: 0 auto; padding-bottom: calc(var(--inset-bottom) + 32px); }
+.screen { padding: 0 16px; }
+.bar {
+  position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 12px;
+  margin: 0 -16px 8px; padding: calc(var(--inset-top) + 10px) 16px 10px; background: var(--bg);
+}
+.bar-title { flex: 1; font-size: 1.3rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.updated-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.hint { color: var(--muted); font-size: 0.85rem; }
+.link { color: var(--accent); }

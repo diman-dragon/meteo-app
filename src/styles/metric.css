@@ -1,0 +1,4 @@
+.metric-row { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 1px solid var(--border); }
+.metric-row:first-child { border-top: 0; }
+.metric-label { color: var(--muted); }
+.metric-value { text-align: right; font-variant-numeric: tabular-nums; }

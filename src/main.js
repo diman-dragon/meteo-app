@@ -1,0 +1,21 @@
+import './styles/tokens.css';
+import './styles/themes/amoled.css';
+import './styles/themes/lightBrown.css';
+import './styles/base.css';
+import './styles/layout.css';
+import './styles/buttons.css';
+import './styles/card.css';
+import './styles/hero.css';
+import './styles/metric.css';
+import './styles/strip.css';
+import './styles/dayRow.css';
+import './styles/dialog.css';
+import './styles/toast.css';
+import './styles/choice.css';
+import './styles/form.css';
+import './styles/results.css';
+import './styles/empty.css';
+import './styles/footer.css';
+import { bootApp } from './flows/bootApp.js';
+
+bootApp();

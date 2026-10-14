@@ -1,0 +1,4 @@
+html, body { margin: 0; background: var(--bg); color: var(--text); }
+body { font: 16px/1.45 var(--font); -webkit-tap-highlight-color: transparent; }
+h1, h2, h3, p { margin: 0; }
+button, input { font: inherit; }

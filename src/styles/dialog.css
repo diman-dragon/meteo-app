@@ -1,0 +1,7 @@
+dialog.dialog {
+  width: min(92vw, 520px); max-height: 82vh; overflow: auto; padding: 16px;
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text);
+}
+dialog.dialog::backdrop { background: var(--overlay); }
+.dialog-title { margin-bottom: 12px; font-size: 1.1rem; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }

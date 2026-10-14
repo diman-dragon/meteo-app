@@ -1,0 +1,6 @@
+.results { display: flex; flex-direction: column; gap: 8px; }
+.result {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 14px;
+  border: 1px solid var(--border); border-radius: 12px; background: transparent; color: var(--text); text-align: left;
+}
+.result-name { font-weight: 600; }

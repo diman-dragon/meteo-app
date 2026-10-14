@@ -1,0 +1,4 @@
+.hero { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+.hero-icon { font-size: 3.4rem; line-height: 1; }
+.hero-temp { font-size: 3.6rem; font-weight: 200; line-height: 1; }
+.hero-text { color: var(--muted); }

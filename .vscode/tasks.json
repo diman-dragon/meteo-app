@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Atomicity check", "type": "npm", "script": "check", "problemMatcher": [] },
+    { "label": "Dev server", "type": "npm", "script": "dev", "problemMatcher": [] },
+    { "label": "Sync Android", "type": "npm", "script": "sync", "problemMatcher": [] }
+  ]
+}

@@ -1,0 +1,7 @@
+.day-row {
+  display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; width: 100%;
+  padding: 10px 0; border: 0; border-top: 1px solid var(--border); background: transparent; color: var(--text); text-align: left;
+}
+.day-row:first-of-type { border-top: 0; }
+.day-temp { font-variant-numeric: tabular-nums; min-width: 84px; text-align: right; }
+.day-icon { font-size: 1.4rem; }

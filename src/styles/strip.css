@@ -1,0 +1,8 @@
+.hour-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+.hour-item {
+  flex: 0 0 auto; min-width: 62px; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 8px; border: 1px solid var(--border); border-radius: 12px; background: transparent; color: var(--text);
+}
+.hour-time { color: var(--muted); font-size: 0.8rem; }
+.hour-icon { font-size: 1.4rem; }
+.hour-pop { min-height: 1em; color: var(--accent); font-size: 0.78rem; }
