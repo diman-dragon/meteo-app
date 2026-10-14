@@ -1,0 +1,6 @@
+.gauge-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.gauge-number { font-size: 3rem; font-weight: 300; line-height: 1; }
+.gauge-band { font-size: 1.1rem; font-weight: 600; }
+.gauge-track { position: relative; display: flex; gap: 3px; height: 10px; }
+.gauge-seg { flex: 1; border-radius: 5px; }
+.gauge-marker { position: absolute; top: -5px; width: 4px; height: 20px; margin-left: -2px; border-radius: 2px; background: var(--text); box-shadow: 0 0 0 2px var(--bg); }

@@ -1,1 +1,1 @@
-export const themeIds = Object.freeze(['amoled', 'light-brown']);
+export const themeIds = Object.freeze(['dark', 'light']);

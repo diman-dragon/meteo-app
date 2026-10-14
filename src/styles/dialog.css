@@ -1,7 +1,8 @@
 dialog.dialog {
-  width: min(92vw, 520px); max-height: 82vh; overflow: auto; padding: 16px;
-  border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--text);
+  width: min(92vw, 520px); max-height: 82vh; overflow: auto; padding: 18px;
+  border: 1px solid var(--border); border-radius: 22px; background: var(--dialog-bg); color: var(--text);
 }
-dialog.dialog::backdrop { background: var(--overlay); }
+dialog.dialog::backdrop { background: var(--overlay); backdrop-filter: blur(4px); }
 .dialog-title { margin-bottom: 12px; font-size: 1.1rem; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+.dialog-body .card-title { margin-top: 14px; }

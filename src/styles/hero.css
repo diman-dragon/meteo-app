@@ -1,4 +1,12 @@
-.hero { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
-.hero-icon { font-size: 3.4rem; line-height: 1; }
-.hero-temp { font-size: 3.6rem; font-weight: 200; line-height: 1; }
-.hero-text { color: var(--muted); }
+.hero { margin-bottom: 12px; padding: 20px; border-radius: 26px; color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25); }
+.hero-top { display: flex; align-items: center; justify-content: space-between; }
+.hero-temp { font-size: 5.4rem; font-weight: 200; line-height: 1; letter-spacing: -0.04em; }
+.hero-desc { margin-top: 8px; font-size: 1.3rem; font-weight: 600; }
+.hero-sub { opacity: 0.9; font-size: 0.95rem; }
+.sky-clear-day { background: linear-gradient(160deg, #2f8cf0, #6cc0ff 62%, #ffd27a); }
+.sky-clear-night { background: linear-gradient(160deg, #0f1440, #2a2f7c); }
+.sky-cloud { background: linear-gradient(160deg, #5f7897, #a0b2c6); }
+.sky-rain { background: linear-gradient(160deg, #2c4263, #5f7c9c); }
+.sky-snow { background: linear-gradient(160deg, #6f8fb0, #c4d8ec); }
+.sky-storm { background: linear-gradient(160deg, #22253f, #5c4a80); }
+.sky-fog { background: linear-gradient(160deg, #7b8896, #b8c2ce); }

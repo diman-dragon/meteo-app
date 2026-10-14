@@ -1,0 +1,7 @@
+.pager-wrap { display: flex; flex: 1; flex-direction: column; min-height: 0; }
+.pager {
+  display: flex; flex: 1; min-height: 0; overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.pager::-webkit-scrollbar { display: none; }
+.page { flex: 0 0 100%; box-sizing: border-box; scroll-snap-align: start; scroll-snap-stop: always; }

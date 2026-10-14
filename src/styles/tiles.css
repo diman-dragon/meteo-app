@@ -1,0 +1,5 @@
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.tile { padding: 14px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
+.tile-label { color: var(--muted); font-size: 0.78rem; }
+.tile-value { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; font-size: 1.25rem; font-weight: 600; }
+.tile-value svg { color: var(--accent); }

@@ -1,3 +1,10 @@
-.card { margin-bottom: 12px; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
-.card-title { margin-bottom: 12px; font-size: 0.95rem; font-weight: 600; color: var(--muted); }
+.card {
+  margin-bottom: 12px; padding: 16px; border: 1px solid var(--border); border-radius: 20px;
+  background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(12px);
+}
+.card-title { margin-bottom: 12px; font-size: 0.82rem; font-weight: 650; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
 .card > .btn { margin-top: 12px; }
+details.card > .summary { margin-bottom: 0; }
+details.card[open] > .summary { margin-bottom: 12px; }
+.summary::after { content: ' ▾'; }
+details[open] > .summary::after { content: ' ▴'; }

@@ -1,4 +1,7 @@
-html, body { margin: 0; background: var(--bg); color: var(--text); }
-body { font: 16px/1.45 var(--font); -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); color: var(--text); }
+body { font: 16px/1.45 var(--font); -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+#app { background: linear-gradient(180deg, var(--bg2), var(--bg) 70%); }
 h1, h2, h3, p { margin: 0; }
 button, input { font: inherit; }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }

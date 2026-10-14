@@ -1,7 +1,10 @@
 .day-row {
-  display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; width: 100%;
-  padding: 10px 0; border: 0; border-top: 1px solid var(--border); background: transparent; color: var(--text); text-align: left;
+  display: grid; grid-template-columns: 1fr 32px 34px minmax(60px, 1.1fr) 34px 34px; align-items: center; gap: 8px;
+  width: 100%; padding: 8px 0; border: 0; border-top: 1px solid var(--border); background: transparent; color: var(--text); text-align: left;
 }
 .day-row:first-of-type { border-top: 0; }
-.day-temp { font-variant-numeric: tabular-nums; min-width: 84px; text-align: right; }
-.day-icon { font-size: 1.4rem; }
+.day-low { color: var(--muted); text-align: right; }
+.day-high { font-weight: 600; }
+.day-rain { color: var(--c-rain); font-size: 0.78rem; text-align: right; }
+.range-track { position: relative; height: 6px; border-radius: 3px; background: var(--border); }
+.range-fill { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: linear-gradient(90deg, var(--c-cold), var(--c-temp)); }

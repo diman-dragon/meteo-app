@@ -1,0 +1,16 @@
+.chart-svg { display: block; width: 100%; height: auto; }
+.chart-grid line { stroke: var(--border); stroke-width: 1; }
+.chart-grid text, .chart-x text { fill: var(--muted); font-size: 10px; }
+.chart-line { fill: none; stroke-width: 2.4; stroke-linecap: round; }
+.chart-marker { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.chart-dot { stroke: var(--bg); stroke-width: 2; }
+.readout { min-height: 1.3em; margin-bottom: 6px; color: var(--muted); font-size: 0.8rem; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 8px; color: var(--muted); font-size: 0.78rem; }
+.legend-dot { display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; }
+.sun-arc { width: 100%; height: auto; }
+.sun-arc text { fill: var(--muted); font-size: 12px; }
+.sun-arc .sun-center { fill: var(--text); font-size: 15px; font-weight: 600; }
+.sun-track, .sun-progress { fill: none; stroke-width: 5; stroke-linecap: round; }
+.sun-track { stroke: var(--border); }
+.sun-progress { stroke: #ffb84d; }
+.sun-dot { fill: #ffc857; stroke: var(--bg); stroke-width: 3; }

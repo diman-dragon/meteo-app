@@ -1,8 +1,8 @@
 .btn {
-  min-height: 44px; padding: 0 18px; border-radius: 999px; cursor: pointer;
+  min-height: 46px; padding: 0 20px; border-radius: 999px; cursor: pointer;
   border: 1px solid var(--border); background: var(--surface); color: var(--text);
 }
-.btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; font-weight: 600; }
+.btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; font-weight: 650; }
 .btn.ghost { background: transparent; }
 .btn:disabled { opacity: 0.55; }
-.btn:focus-visible, .choice:focus-visible, .hour-item:focus-visible, .day-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn:focus-visible, .choice:focus-visible, .hour-item:focus-visible, .day-row:focus-visible, .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
