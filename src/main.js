@@ -14,6 +14,7 @@ import './styles/charts.css';
 import './styles/pager.css';
 import './styles/tabs.css';
 import './styles/gauge.css';
+import './styles/summary.css';
 import './styles/dayRow.css';
 import './styles/dialog.css';
 import './styles/toast.css';
