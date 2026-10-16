@@ -1,4 +1,5 @@
 export const ruVars = Object.freeze({
+  temperature_2m_mean: 'Температура средняя',
   temperature_2m: 'Температура', relative_humidity_2m: 'Влажность',
   dew_point_2m: 'Точка росы', apparent_temperature: 'Ощущаемая температура',
   is_day: 'День', precipitation: 'Осадки', rain: 'Дождь', showers: 'Ливни',

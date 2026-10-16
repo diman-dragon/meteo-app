@@ -7,7 +7,6 @@ import './styles/iconbtn.css';
 import './styles/buttons.css';
 import './styles/card.css';
 import './styles/hero.css';
-import './styles/tiles.css';
 import './styles/metric.css';
 import './styles/strip.css';
 import './styles/charts.css';

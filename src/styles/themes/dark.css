@@ -4,5 +4,6 @@
   --overlay: rgba(2, 5, 15, 0.72); --shadow: none; --dialog-bg: #151c36;
   --c-temp: #ffb454; --c-cold: #6fc3ff; --c-feel: #ff7a90; --c-rain: #4db3ff; --c-wind: #5fe0c0;
   --c-gust: #b69cff; --c-hum: #5fd0ff; --c-cloud: #9aa6c4; --c-pressure: #ffd166; --c-uv: #ff9f6b;
+  --c-snow: #bfe3ff; --c-aqi: #3fcf8e; --c-pm: #ff7a90; --c-sun: #ffc857;
   color-scheme: dark;
 }

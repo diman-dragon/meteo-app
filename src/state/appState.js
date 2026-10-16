@@ -5,5 +5,8 @@ export const appState = {
   screen: 'main',
   history: [],
   page: 0,
-  busy: false
+  busy: false,
+  historyData: null,
+  historyDate: null,
+  historyBusy: false
 };

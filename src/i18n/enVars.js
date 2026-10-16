@@ -1,4 +1,5 @@
 export const enVars = Object.freeze({
+  temperature_2m_mean: 'Mean temperature',
   temperature_2m: 'Temperature', relative_humidity_2m: 'Humidity',
   dew_point_2m: 'Dew point', apparent_temperature: 'Apparent temperature',
   is_day: 'Daytime', precipitation: 'Precipitation', rain: 'Rain', showers: 'Showers',

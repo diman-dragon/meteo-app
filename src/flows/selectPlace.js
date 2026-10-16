@@ -6,6 +6,7 @@ import { goHome } from '../navigation/goHome.js';
 export async function selectPlace(place) {
   appState.place = place;
   appState.weather = null;
+  appState.historyData = null;
   await Promise.all([savePlace(place), saveWeather(null)]);
   goHome();
 }

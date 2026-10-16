@@ -18,6 +18,7 @@ export async function ruleI18nComplete(files, root) {
   const dynamic = [
     ...(await pickIds(root, 'themeIds')).map((id) => `theme.${id}`),
     ...(await pickIds(root, 'languageIds')).map((id) => `lang.${id}`),
+    ...(await pickIds(root, 'pageIds')).map((id) => `tab.${id}`),
     ...Array.from({ length: 8 }, (_, i) => `compass${i}`),
     ...Array.from({ length: 6 }, (_, i) => `aqi.${i}`)
   ];

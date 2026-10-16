@@ -8,11 +8,11 @@ import { t } from '../../i18n/t.js';
 
 export function airStat(air) {
   const value = air?.current?.european_aqi;
-  if (value == null) return statCard({ label: tVar('european_aqi'), value: '—', sub: t('air.unavailable') });
+  if (value == null) return statCard({ label: tVar('european_aqi'), value: '—', sub: t('history.noAir'), page: 'air' });
   const band = aqiBand(value);
   const pm = formatValue('pm2_5', air.current.pm2_5, air.current_units.pm2_5);
   return statCard({
-    label: tVar('european_aqi'), value: String(Math.round(value)), color: aqiColors[band],
+    label: tVar('european_aqi'), value: String(Math.round(value)), color: aqiColors[band], page: 'air',
     sub: `${t(`aqi.${band}`)} · PM2.5 ${pm}`, spark: aqiBar(value)
   });
 }

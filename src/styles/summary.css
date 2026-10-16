@@ -1,15 +1,28 @@
 .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-.stat { margin-bottom: 0; padding: 14px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
-.page > .stat { margin-bottom: 12px; }
-.stat-label { color: var(--muted); font-size: 0.78rem; }
+.stat, .link-card { position: relative; box-sizing: border-box; padding: 14px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); color: var(--text); text-align: left; }
+.stat.clickable, .link-card { width: 100%; cursor: pointer; transition: transform 0.12s ease; }
+.stat.clickable:active, .link-card:active { transform: scale(0.98); }
+.link-card { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.link-title { font-weight: 600; }
+.chevron { margin-left: 6px; color: var(--muted); font-size: 1.2rem; line-height: 1; }
+.stat-label { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.78rem; }
 .stat-value { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; font-size: 1.9rem; font-weight: 300; line-height: 1.2; }
 .stat-value svg { color: var(--c-wind); }
 .stat-sub { margin: 2px 0 8px; color: var(--muted); font-size: 0.8rem; }
+.big-value { font-size: 3.6rem; font-weight: 250; line-height: 1.1; letter-spacing: -0.03em; }
 .spark { display: block; width: 100%; height: auto; }
 .spark-line { fill: none; stroke-width: 2.4; stroke-linecap: round; }
-.stat .gauge-track { margin-top: 10px; }
+.stat .gauge-track, .stat .range-track { margin-top: 10px; }
 .timeline { display: flex; justify-content: space-between; gap: 2px; }
 .tl-col { display: flex; flex: 1; flex-direction: column; align-items: center; gap: 2px; }
 .tl-time { color: var(--muted); font-size: 0.72rem; }
 .tl-temp { font-weight: 600; font-size: 0.9rem; }
 .outlook-text { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+.compass { display: block; width: 62%; max-width: 240px; height: auto; margin: 0 auto; }
+.compass-ring { fill: none; stroke: var(--border); stroke-width: 3; }
+.compass text { fill: var(--muted); font-size: 14px; font-weight: 600; }
+.compass-arrow { stroke: var(--c-wind); stroke-width: 6; stroke-linecap: round; }
+.compass-head { fill: var(--c-wind); }
+.compass-speed { margin-top: 8px; text-align: center; font-size: 1.6rem; font-weight: 300; }
+.quick-dates { display: flex; flex-wrap: wrap; gap: 8px; }
+.hist-hint { padding: 8px 4px; text-align: center; }

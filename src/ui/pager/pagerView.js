@@ -10,6 +10,6 @@ export function pagerView(pages, labels) {
   pager.append(...pages);
   const tabs = pagerTabs(labels, appState.page, (index) => scrollToPage(index));
   pager.addEventListener('scroll', () => onPagerScroll(pager, tabs), { passive: true });
-  wrap.append(pager, tabs);
+  wrap.append(tabs, pager);
   return wrap;
 }

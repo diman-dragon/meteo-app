@@ -1,7 +1,10 @@
 const ONLY_IMPORTERS = {
   refreshWeather: ['src/ui/components/refreshButton.js'],
   fetchForecast: ['src/flows/refreshWeather.js'],
-  fetchAirQuality: ['src/flows/refreshWeather.js']
+  fetchAirQuality: ['src/flows/refreshWeather.js'],
+  loadHistory: ['src/ui/history/historyForm.js', 'src/ui/history/quickDates.js'],
+  fetchHistory: ['src/flows/loadHistory.js'],
+  fetchHistoryAir: ['src/flows/loadHistory.js']
 };
 const FORBIDDEN_TRIGGERS = [/setInterval/, /visibilitychange/, /appStateChange/, /'resume'/, /'online'/, /networkStatusChange/];
 

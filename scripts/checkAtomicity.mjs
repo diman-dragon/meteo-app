@@ -11,12 +11,13 @@ import { ruleNoDeadFiles } from './check/ruleNoDeadFiles.mjs';
 import { ruleI18nComplete } from './check/ruleI18nComplete.mjs';
 import { ruleVarsLabelled } from './check/ruleVarsLabelled.mjs';
 import { ruleChartsUseRequestedVars } from './check/ruleChartsUseRequestedVars.mjs';
+import { ruleTopicMetricsRequested } from './check/ruleTopicMetricsRequested.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const files = loadSourceFiles(root, 'src');
 const rules = [ruleOneExport, ruleNameMatchesExport, ruleOneFunction, ruleMaxLines, ruleSafeApis,
   ruleNetworkIsolation, ruleUpdateOnClickOnly, ruleNoDeadFiles, ruleI18nComplete, ruleVarsLabelled,
-  ruleChartsUseRequestedVars];
+  ruleChartsUseRequestedVars, ruleTopicMetricsRequested];
 
 let failed = 0;
 for (const rule of rules) {
