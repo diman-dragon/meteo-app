@@ -51,7 +51,7 @@ jobs:
           echo "apksigner: $APKSIGNER"
           echo "apk: $APK"
           "$APKSIGNER" verify --print-certs "$APK" || true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: meteo-release
           path: |
