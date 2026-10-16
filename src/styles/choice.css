@@ -1,3 +1,8 @@
 .choice-group { display: flex; gap: 4px; padding: 4px; border-radius: 14px; background: var(--bg); }
 .choice { flex: 1; min-height: 42px; border: 0; border-radius: 10px; background: transparent; color: var(--muted); }
 .choice[aria-checked='true'] { background: var(--accent); color: var(--on-accent); font-weight: 650; }
+.unit-group { margin-bottom: 14px; }
+.unit-group:last-child { margin-bottom: 0; }
+.unit-label { margin-bottom: 6px; color: var(--muted); font-size: 0.8rem; }
+.choice-group { flex-wrap: wrap; }
+.choice { padding: 0 8px; font-size: 0.88rem; }

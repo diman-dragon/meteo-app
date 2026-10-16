@@ -2,6 +2,7 @@ import { el } from '../el.js';
 import { weatherIcon } from '../icons/weatherIcon.js';
 import { formatClock } from '../../domain/formatClock.js';
 import { t } from '../../i18n/t.js';
+import { formatTemp } from '../../domain/formatTemp.js';
 
 export function hoursTimeline(forecast, summary) {
   const { hourly } = forecast;
@@ -13,7 +14,7 @@ export function hoursTimeline(forecast, summary) {
     icon.append(weatherIcon(hourly.weather_code[i], hourly.is_day[i], 30));
     col.append(
       el('div', 'tl-time', k === 0 ? t('tab.now') : formatClock(hourly.time[i])), icon,
-      el('div', 'tl-temp', `${Math.round(hourly.temperature_2m[i])}°`)
+      el('div', 'tl-temp', formatTemp(hourly.temperature_2m[i]))
     );
     row.append(col);
   }

@@ -2,11 +2,10 @@ import { svgEl } from '../svg/svgEl.js';
 import { chartColors } from '../../config/chartColors.js';
 import { chartGeometry as g } from '../../config/chartGeometry.js';
 import { tVar } from '../../i18n/tVar.js';
-import { formatValue } from '../../domain/formatValue.js';
 
 export function scrubChart(parts, ctx) {
   const { svg, xScale, yScale, step } = parts;
-  const { def, columns, units, readout, pointLabel } = ctx;
+  const { def, columns, format, readout, pointLabel } = ctx;
   const marker = svgEl('line', { class: 'chart-marker', y1: g.top, y2: g.height - g.bottom, visibility: 'hidden' });
   const dots = def.series.map((s) => svgEl('circle', { r: 4, class: 'chart-dot', style: `fill:${chartColors[s.name]}`, visibility: 'hidden' }));
   svg.append(marker, ...dots);
@@ -20,6 +19,6 @@ export function scrubChart(parts, ctx) {
       dots[k].setAttribute('visibility', value == null ? 'hidden' : 'visible');
       if (value != null) { dots[k].setAttribute('cx', xScale(index)); dots[k].setAttribute('cy', yScale(value)); }
     });
-    readout.textContent = `${pointLabel(index)} · ${def.series.map((s, k) => `${tVar(s.name)} ${formatValue(s.name, columns[k][index], units[s.name])}`).join(' · ')}`;
+    readout.textContent = `${pointLabel(index)} · ${def.series.map((s, k) => `${tVar(s.name)} ${format(s.name, columns[k][index])}`).join(' · ')}`;
   });
 }

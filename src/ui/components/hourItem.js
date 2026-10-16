@@ -6,6 +6,7 @@ import { hourlyVars } from '../../config/hourlyVars.js';
 import { formatClock } from '../../domain/formatClock.js';
 import { formatDay } from '../../domain/formatDay.js';
 import { valuesAt } from '../../domain/valuesAt.js';
+import { formatTemp } from '../../domain/formatTemp.js';
 
 export function hourItem(hourly, units, index) {
   const time = hourly.time[index];
@@ -16,7 +17,7 @@ export function hourItem(hourly, units, index) {
   icon.append(weatherIcon(hourly.weather_code[index], hourly.is_day[index], 34));
   item.append(
     el('span', 'hour-time', formatClock(time)), icon,
-    el('span', 'hour-temp', `${Math.round(hourly.temperature_2m[index])}°`),
+    el('span', 'hour-temp', formatTemp(hourly.temperature_2m[index])),
     el('span', 'hour-pop', pop ? `${pop}%` : '')
   );
   item.addEventListener('click', () => detailsDialog(
