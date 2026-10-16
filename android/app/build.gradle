@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
 
 def appVersion = new groovy.json.JsonSlurper().parse(file('../../package.json')).version
-def versionParts = appVersion.tokenize('.').collect { it.toInteger() }
-def computedVersionCode = System.getenv('VERSION_CODE') ? System.getenv('VERSION_CODE').toInteger() : (versionParts[0] * 10000 + versionParts[1] * 100 + versionParts[2])
+// versionCode = minutes since 2026-01-01 UTC: always grows with time, so every build (local or CI,
+// debug or release) can be installed as an UPDATE over any earlier one. Override with VERSION_CODE.
+def computedVersionCode = System.getenv('VERSION_CODE') ? System.getenv('VERSION_CODE').toInteger() : (System.currentTimeMillis().intdiv(1000L) - 1767225600L).intdiv(60L).toInteger()
 
 android {
     namespace = "dev.meteo.weather"
@@ -21,6 +22,16 @@ android {
         }
     }
     signingConfigs {
+        // ONE shared, NON-SECRET development key (committed to the repo: android/keystore/dev.keystore).
+        // Every debug and release build is signed with it, so builds update each other.
+        dev {
+            storeFile file('../keystore/dev.keystore')
+            storeType 'pkcs12'
+            storePassword 'android'
+            keyAlias 'meteodev'
+            keyPassword 'android'
+        }
+        // Real upload key for Google Play (only when KEYSTORE_PATH is provided, e.g. from GitHub secrets).
         release {
             def ksPath = System.getenv('KEYSTORE_PATH')
             if (ksPath) {
@@ -32,8 +43,11 @@ android {
         }
     }
     buildTypes {
+        debug {
+            signingConfig signingConfigs.dev
+        }
         release {
-            if (System.getenv('KEYSTORE_PATH')) { signingConfig signingConfigs.release }
+            signingConfig(System.getenv('KEYSTORE_PATH') ? signingConfigs.release : signingConfigs.dev)
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

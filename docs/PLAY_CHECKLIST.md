@@ -5,13 +5,13 @@
 ## Техника
 - ✅ **targetSdk 36 / compileSdk 36.** С 31.08.2026 новые приложения и обновления обязаны таргетить Android 16 (API 36). Даёт Capacitor 8.
 - ✅ **minSdk 24**, JDK 21, Gradle 8.14.3, AGP 8.13 (из шаблона Capacitor 8), Node 22.
-- ✅ **Формат AAB** (`./gradlew bundleRelease`), подпись ключом загрузки из секретов GitHub.
+- ✅ **Формат AAB** (`./gradlew bundleRelease`). Пока в разработке подписывается общим dev-ключом; 🔧 перед первой загрузкой в Play создайте свой ключ загрузки и секреты GitHub (см. README → «Когда дойдёте до Google Play»).
 - ✅ **Свои нативные библиотеки отсутствуют** → требование 16 KB page size не затрагивает приложение. ⚠️ Подтвердить в *Pre-launch report*.
 - ✅ **Edge-to-edge и predictive back (API 36):** отступы через `--safe-area-inset-*` (SystemBars в Capacitor 8), кнопка «назад» через `@capacitor/app`. 🔧 Прогнать на эмуляторе Android 16.
 - ✅ **Разрешения:** только `INTERNET` и `ACCESS_NETWORK_STATE`. Геолокации нет → декларация чувствительных разрешений не нужна.
 - ✅ **Безопасность:** HTTP запрещён (`cleartext: false`), CSP в `index.html` (connect-src только четыре хоста Open-Meteo: forecast, archive, air-quality, geocoding), `allowBackup=false`, нет `innerHTML`/`eval` (проверяет `npm run check`).
 - 🔧 **applicationId** `dev.meteo.weather` — замените в `capacitor.config.json`, `android/app/build.gradle`, затем переименуйте пакет в `android/app/src/main/java/...`. Менять после первой загрузки НЕЛЬЗЯ. Имена `com.example.*` Google Play не принимает.
-- ✅ **Версии:** единый источник — `package.json` (`versionName`), `versionCode = major*10000 + minor*100 + patch`; каждая загрузка в Play должна иметь больший versionCode.
+- ✅ **Версии:** `versionName` из `package.json`; `versionCode` = минуты с 01.01.2026 UTC (растёт с каждой сборкой, не нужно править руками; можно переопределить переменной `VERSION_CODE`).
 
 ## Аккаунт и тестирование
 - 🔧 Аккаунт разработчика (разовый взнос 25 $), подтверждение личности.

@@ -47,16 +47,32 @@ npm run android:debug   # нужен Android SDK + JDK 21
 ```
 Открыть в Android Studio: `npx cap open android`.
 
-## GitHub
-- `ci.yml` — на push/PR: check → build → debug APK (артефакт).
-- `release.yml` — на тег `vX.Y.Z`: подписанный **AAB** (артефакт).
+## GitHub и подписи
+- `ci.yml` — на push/PR: check → build → **debug APK** (артефакт `meteo-debug-apk`).
+- `release.yml` — на тег `vX.Y.Z`: **APK + AAB** (артефакт `meteo-release`).
 
-Секреты репозитория: `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`.
+### Одна несекретная подпись (разработка)
+Все сборки — и debug, и release, и локальные, и из Actions — подписываются **одним и тем же ключом** `android/keystore/dev.keystore`.
+Он лежит в репозитории (пароль `android`, алиас `meteodev`) и **не секретный**. Поэтому новая сборка ставится **поверх** старой как обновление, данные приложения сохраняются.
+
+Чтобы обновление сработало, нужны три вещи (все уже настроены):
+1. тот же `applicationId` (`dev.meteo.weather`) — не менять;
+2. та же подпись — dev-ключ;
+3. `versionCode` больше установленного: он считается автоматически как «минуты с 01.01.2026 UTC», растёт с каждой сборкой, откуда бы она ни была.
+
+Отпечаток для сверки: `keytool -list -v -keystore android/keystore/dev.keystore -storepass android` (SHA-256 `6A:F9:B4:07:…:50:B8:DA`). В логе каждого CI-запуска печатается сертификат собранного APK — он должен совпадать.
+
+Если на телефоне стоит сборка со **старой** (случайной debug) подписью, один раз удалите её — дальше обновления пойдут без переустановки.
+
+### Когда дойдёте до Google Play
+Публичный ключ нельзя использовать как ключ загрузки. Создайте настоящий и добавьте секреты репозитория `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`; `release.yml` сам переключится на него:
 ```bash
 keytool -genkeypair -v -keystore upload.jks -alias upload -keyalg RSA -keysize 2048 -validity 10000
 base64 -w0 upload.jks     # → KEYSTORE_BASE64
 ```
-Версия: меняйте только `package.json` (`versionName`; `versionCode` считается автоматически). Тег должен совпадать: `v1.0.1`.
+Учтите: приложение из Play подписывается ключом Play App Signing, поэтому сборку с dev-ключом придётся один раз удалить перед установкой из Play.
+
+Версия: меняйте только `package.json` (`versionName`). Тег должен совпадать: `v1.3.1`.
 
 ## Перед публикацией
 Смотрите `docs/PLAY_CHECKLIST.md`. Обязательно: сменить `applicationId`, URL политики конфиденциальности (`src/config/privacyPolicyUrl.js`), e-mail в `docs/privacy-policy.md`.
